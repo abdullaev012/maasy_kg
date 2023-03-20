@@ -1,0 +1,33 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Вопросы и ответы {% endblock %}
+
+
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'questions' %}">Вопросы и ответы /</a>
+    </div>
+</div>
+
+
+<div class='container mt-2 mb-3 '>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card shadow w-100 '>
+                <h1 class="titleMain mt-3">Вопросы и ответы</h1>
+                <hr>
+                <div class="btnAccordion collapsed" data-toggle="collapse" data-target="#faqAccordion3" aria-expanded="false">
+                    <p style="background-color:  rgb(91, 91, 230);; color: aliceblue;" class="title-faq">Как оплатить?</p>
+                    <p>При заказе с доставкой вы можете оплатить покупку курьеру наличными или через "Элсом"&nbsp;после
+                        получения товара и его проверки. В случае самовывоза вы можете оплатить покупку любым удобным вам
+                        способом: наличными или&nbsp;картой (Элкарт, Visa).</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Как оформить заказ {% endblock %}
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'contacts' %}">Как оформить заказ /</a>
+    </div>
+</div>
+
+<div class='container mt-2 mb-3 '>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card shadow w-100'>
+                <div style="display: flex; flex-direction: column;">
+                    <div class="">
+                        <h4>1 шаг:</h4>
+                        <h6>Чтобы перейти в корзину нажмите 'Корзина'.</h6>
+                        <img src="../../../static/images/Корзина.jpg" style="width: 100%;" alt="">
+                    </div>
+                    <hr>
+                    <div class="">
+                        <h4>2 шаг:</h4>
+                        <h6>Здесь выходит что вы добавили в корзину.</h6>
+                        <h6>Чтобы оформить заказ нажмите 'Оформить'.</h6>
+                        <img src="../../../static/images/photo_2022-12-26_17-12-09.jpg" style="width: 100%;" alt="">
+                    </div>
+                    <div class="">
+                        <h4>3 шаг:</h4>
+                        <h6>Здесь вы должны обязательно заполнить все строки.</h6>
+                        <h6>Чтобы оформить заказ нажмите 'Оформить'.</h6>
+                        <img src="../../../static/images/Screenshot 2022-12-28 161807.png" style="width: 100%; height: 500px;" alt="">
+                    </div>
+                    <div class="">
+                        <h4>4 шаг:</h4>
+                        <h6>Если вы хотите забрать свой заказ через курьером или самовывоз нажмите 'COD | оформить заказ'.</h6>
+                        <h6>Если вы хотите заплать через картой нажмите 'Оплатить с картой'.</h6>
+                        <img src="../../../static/images/photo_2022-12-26_17-11-57.jpg" style="width: 100%; height: 500px;" alt="">
+                    </div>
+                    <h5 style="margin: 25px 0 0 0; color: black;" class="text-center">Вы можете связаться с нашими менеджерами по телефону <a style="color: blue;" href="tel: +996 (559) 256 662">+996 (559) 256 662.</a>Все контактные данные вы найдёте в разделе <a href="{% url 'contacts' %}" style="color: blue;">"Контакты".</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

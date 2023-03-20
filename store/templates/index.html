@@ -1,0 +1,135 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Главная {% endblock %}
+{% block content %}
+{% include 'store/inc/slider.html' %}
+
+<div class='container my-5'>
+    {% if trending_products %}
+    <div class='row'>
+        <div class='col-md-12'>
+            <h3 class="trend">Трендовые товары</h3>
+            <hr>
+            <div class='row roww'>
+                {% for item in trending_products %}
+                <div class='col-md-3 product_data cardd'>
+                    <div class='card-body card'>
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
+                            <div class='category-image'>
+                                <img src="{{ item.product_image.url }}" alt="Product image"
+                                    class="w-100"/>
+                            </div>
+                            <h4 class="text-center item_title">{{ item.name}}</h4>
+                        </a>
+                        <div class="som">
+                            <span class="text-danger"><s>{{ item.original_price | stringformat:'d'}}
+                                    Сом</s></span>
+                            <span>{{ item.selling_price | stringformat:'d' }} Сом</span>
+                        </div>
+                        <!-- <br> -->
+                        <div class='row mt-3'>
+                            <div class='text-center'>
+                                <span class="mb-2">
+                                    <a type="button" href="{% url 'productview' item.category.slug item.slug %}"
+                                        class="btn btn-primary">Подробнее</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<div class='container sms'>
+    <div class='row'>
+        <div class='col-md-12 col-md-121'>
+            <div class='card'>
+                <div class='card-body card-body1'>
+                    <div class='d-flex col-md-12 emailnew'>
+                        <i style="color: orangered;" class="fa-solid fa-6x fa-envelopes-bulk p-5"></i>
+                        <div class="col-md-5 mt-5 newemail">
+                            <h5 class="h5">Хотите знать о новом поступлениях или о товарaх
+                                со скидками?
+                            </h5>
+                            <h6 class="h6" style="color: aliceblue;">Подпишитесь и получайте рассылки</h6>
+                        </div>
+                        <form method="POST" action="/email_news/" class="asdfg">
+                            {% csrf_token %}
+                            <div style="position: relative; " class="formGroup formGroup5">
+                                <input required name="search" class="formGroup1 inp" placeholder="Ваш E-mail"
+                                    type="text">
+                                <button class="btn me-1 formGroup1 but" type="search"><i
+                                        class="fa-solid fa-paper-plane fa-solid1"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='container my-5'>
+    {% if usual_products %}
+    <div class='row'>
+        <div class='col-md-12'>
+            <h3 class="trend">Товары</h3>
+            <hr>
+            <div class='row roww'>
+                {% for item in usual_products %}
+                <div class='col-md-3 product_data cardd'>
+                    <div class='card-body card'>
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
+                            <div class='category-image'>
+                                <img src="{{ item.product_image.url }}" alt="Product image"
+                                    class="w-100"/>
+                            </div>
+                            <h4 class="text-center item_title">{{ item.name}}</h4>
+                        </a>
+                        <div class="som">
+                            <span class="text-danger"><s>{{ item.original_price | stringformat:'d'}}
+                                    Сом</s></span>
+                            <span>{{ item.selling_price | stringformat:'d' }} Сом</span>
+                        </div>
+                        <!-- <br> -->
+                        <div class='row mt-3'>
+                            <div class='text-center'>
+                                <span class="mb-2">
+                                    <a type="button" href="{% url 'productview' item.category.slug item.slug %}"
+                                        class="btn btn-primary">Подробнее</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        dots: false,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 4
+            }
+        }
+    })
+</script>
+{% endblock scripts %}

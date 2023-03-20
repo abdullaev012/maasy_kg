@@ -1,0 +1,32 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Способы оплаты {% endblock %}
+
+
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'partner' %}">Способы оплаты /</a>
+    </div>
+</div>
+<div class='container mt-2 mb-3 '>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card shadow w-100 '>
+                <h3>Способы оплаты</h3>
+                <hr>
+                <p><strong>Оплата банковской картой, через Интернет, возможна через системы электронных
+                    платежей.</strong></p>
+                <p>Номер карты (PAN) должен иметь не менее 15 и не более 19 символов.</p>
+                <p><strong>Мы принимаем платежи с сайта по следующим банковским картам:
+                </strong></p>
+                <img width="200px" src="../../../static/images/visa.jpeg">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

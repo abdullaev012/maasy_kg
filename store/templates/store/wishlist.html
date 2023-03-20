@@ -1,0 +1,56 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Вопросы и ответы {% endblock %}
+
+
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'wishlist' %}">Cписок желаний /</a>
+    </div>
+</div>
+
+
+
+<div class='container mt-2 mb-3'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card shadow'>
+                <div class='card-body wishdata'>
+                    {% if wishlist %}
+                        {% for item in wishlist %}
+                            <div class='row product_data product_data1 product_data2'>
+                                <div class='col-md-2 my-auto'>
+                                    <img src="{{ item.product.product_image.url }}" height="70px" width="70px" alt="Image here">
+                                </div>
+                                <div class='col-md-2 my-auto'>
+                                    <h6>{{ item.product.name }}</h6>
+                                </div>
+                                <div class='col-md-4 my-auto'>
+                                    <h6>  {{ item.product.selling_price | stringformat:'d' }} Сом</h6>
+                                </div>
+                                <div class='col-md-2 my-auto'>
+                                    <input type="hidden" class="prod_id" value="{{ item.product.id }}">
+                                {% csrf_token %}
+                                    <a href="{% url 'productview' item.product.category.slug item.product.slug %}"class="btn btn-primary"><i class="fa fa-eye"></i> Посмотреть продукт </a>
+                                </div>
+                                <div class='col-md-2 my-auto'>
+                                    <a href="{% url 'deletewishlistitem' item.id %}" class="btn btn-danger"> <i class="fa-sharp fa-solid fa-trash"></i> Удалять</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h4>Ваш список желаний пуст</h4> 
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}

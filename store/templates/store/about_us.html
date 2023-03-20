@@ -1,0 +1,46 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} О нас {% endblock %}
+
+
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'about_us' %}">О нас /</a>
+    </div>
+</div>
+
+<div class='container mt-2 mb-3 '>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card shadow w-100 btnAccordion collapsed ' id="mainContent"  data-toggle="collapse" data-target="#faqAccordion3" aria-expanded="false">
+                <h3 class=" mt-3">О нас</h3>
+                <hr>
+                <p class="text-dark col-md-11">Интернет-магазин "Maasy-kg" предлагает широкий ассортимент масси, калоши по выгодным ценам. На цифровом рынке г. Кара-суу Туратали Базар, 2-Павильон, 501 место</p>
+                <p class="text-dark col-md-11">Магазин Maasy-kg является оптово-розничной. У нас можно заказать в розницу или оптом с доставкой в регионы.
+                </p>
+                <p class="text-dark col-md-11">Приглашаем к сотрудничеству обувные магазины и готовы принять заказ по самым минимальным
+                    ценам.</p>
+                <br>
+                <h3 class="col-md-11">Владелец</h3>
+                <br>
+                <div class="d-flex">
+                    <img width="200px" height="180px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8A2wOvDj7sAobit1mD4lCc6ilEaBm_CF3AQ&usqp=CAU" class="admin" alt="...">
+                    <div class="">
+                        <h3 class="col-md-8">Шахабидин</h3>
+                        <p class="text-dark col-md-7 ">Менеджер оптовых поставок, г. Кара-суу Туратали Базар, 2-Павильон, 501 место Обработка входящей информации, информирование партнеров о
+                            предстоящих новинках и акциях компании, ведение переговоров, контроль доставки грузов транспортными
+                            компаниями,  работа с менеджерами обувных
+                            сетей по обратной связи с розничными покупателями.</p>
+                        <a href="tel: +996 559 256 662"><p class="text-dark col-md-7 ">Tel: +996 559 256 662</p></a>
+                        <p class="text-dark col-md-5 ">E-mail: salamkarasu51@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

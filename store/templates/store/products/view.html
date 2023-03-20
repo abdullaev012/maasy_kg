@@ -1,0 +1,68 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Коллекция Товаров {% endblock %}
+
+
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'collections' %}">Коллекция Товаров /</a>
+        <a class="text-white" href="{% url 'collectionsview' products.category.slug %}">{{products.category.name}} /</a>
+        <a class="text-white" href="{% url 'productview' products.category.slug products.slug %}">{{products.name}}</a>
+    </div>
+</div>
+
+
+<div class='container mt-2 mb-3'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card shadow product_data w-100'>
+                <div class='card-body'>
+                    <div class="row">
+                        <div class='col-md-4 mb-3'>
+                            {% if products.tag %}
+                            <label class="product-viewtag tagg">{{ products.tag }} </label>
+                            {% endif %}
+                            <img src="{{ products.product_image.url }}" class="w-100 product-viewtag-img"
+                                alt="image">
+                        </div>
+                        <div class='col-md-8'>
+                            <h2 class="mb-0">
+                                {{ products.name }}
+                                {% if products.trending %}
+                                <label style="font-size: 16px" class="float-end badge bg-danger trending_tag">В
+                                    тренде</label>
+                                {% endif %}
+                            </h2>
+                            <hr>
+                            <label class="me-3">Первоначальная цена: <s class="text-danger">{{ products.original_price | stringformat:'d' }}
+                                    Сом</s></label>
+                            <label class="me-3">Цена продажи: {{ products.selling_price | stringformat:'d' }}
+                                Сом</label>
+                            <hr>
+                            <h3>Описание</h3>
+                            <p class="mt-3">{{ products.description }}</p>
+                            <div class='row'>
+                                <div class='col-md-9 butt'>
+                                    <a class='btn btn-success mb-3' href="{% url 'addToWishlist' products.id %}">Добавить в
+                                        список желаний <i class="fa-solid fa-heart"></i></a>
+                                    {% for i in size %}
+                                        {% if i.quantity == 0 %}
+                                            <button type="button" class="btn btn-danger">Размер: {{i.size}} Нет на складе &#128511;</button>
+                                        {% else %}
+                                            <a class="btn btn-primary mt-2" href="{% url 'addtocart' i.id %}">Размер: {{i.size}}, Добавить вкорзину <i class="fa-solid fa-basket-shopping"></i></a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

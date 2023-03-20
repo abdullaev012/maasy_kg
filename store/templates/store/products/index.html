@@ -1,0 +1,46 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Коллекция Товаров {% endblock %}
+
+
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'collections' %}">Коллекция Товаров /</a>
+        <a class="text-white" href="{% url 'collectionsview' category.slug %}">{{category.name}}</a>
+    </div>
+</div>
+
+
+<div class='container mt-2 mb-3 '>
+    <div class='row'>
+        <div class='col-md-12 '>
+            <h1>{{category.name}}</h1>
+            <hr>
+            <div class='row rowwwwww'>
+                {% for item in products %}
+                <div class='col-md-3 product_data cardd'>
+                    <div class='card-body card'>
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
+                            <div class='category-image'>
+                                <img src="{{ item.product_image.url }}" alt="Product image"
+                                    class="w-100"/>
+                            </div>
+                            <h4 class="text-center item_title">{{ item.name}}</h4>
+                        </a>
+                        <div class="som">
+                            <span class="text-danger"><s>{{ item.original_price | stringformat:'d'}}
+                                    Сом</s></span>
+                            <span class="">{{ item.selling_price | stringformat:'d' }} Сом</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

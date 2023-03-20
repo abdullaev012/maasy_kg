@@ -1,0 +1,79 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %} Контакты {% endblock %}
+
+
+{% block content %}
+
+<div class='py-3 bg-primary'>
+    <div class='container'>
+        <a class="text-white" href="{% url 'home' %}">Главная /</a>
+        <a class="text-white" href="{% url 'contacts' %}">Контакты /</a>
+    </div>
+</div>
+
+<div class='container mt-2 mb-3 '>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card shadow w-100 '>
+                <div class=' w-100 '>
+                    <h3 class="text-center mt-3">Контакты</h3>
+                    <hr>
+                </div>
+                <div class='d-flex d-flex1' style="display: flex; flex-wrap: wrap;">
+                    <div class='col-md-6 '>
+                        <b>
+                            <h3>Телефон:</h3>
+                        </b>
+                        <p>+996 (559) 256 662</p>
+                        <p><b>E-mail:</b> salamkarasu51@gmail.com</p>
+                        <p><b>Адрес:</b> г. Кара-суу Туратали Базар, 2-Павильон, 501 место</p>
+                        <p><b>Режим работы:</b></p>
+                        <div class="" style="display: flex;">
+                            <p style="margin: -10px 0 0 0;">Понидельник:</p>
+                            <p style="margin: -10px 0 0 5px; font-weight: bold;">закрыто</p>
+                        </div>
+                        <p style="margin: 0;">Вторник: 08:00 - 17:00</p>
+                        <p style="margin: 0;">Среда: 08:00 - 17:00</p>
+                        <p style="margin: 0;">Четверг: 08:00 - 17:00</p>
+                        <div class="" style="display: flex;">
+                            <p style="margin: 0;">Пятница:</p>
+                            <p style="margin: 0 0 0 5px; font-weight: bold;">закрыто</p>
+                        </div>
+                        <p style="margin: 0;">Суббота: 08:00 - 17:00</p>
+                        <p style="margin: 0;">Воскресенье: 08:00 - 17:00</p>
+
+                    </div>
+                    <div class='col-md-6'>
+                        <form method="POST" action="/message/" style="display: flex; flex-direction: column;">
+                            {% csrf_token %}
+                            <label style="margin: 8px;" for="">Имя:</label>
+                            <input required name="name" style="padding: 8px; border-radius: 5px; " placeholder="Имя"
+                                type="text">
+                            <label style="margin: 8px;" for="">E-mail:</label>
+                            <input required name="gmail" style="padding: 8px; border-radius: 5px; " placeholder="E-mail"
+                                type="text">
+                            <label style="margin: 8px;" for="">Телефон:</label>
+                            <input required name="number" style="padding: 8px; border-radius: 5px; "
+                                placeholder="Телефон" type="number">
+                            <label style="margin: 8px;" for="">Сообщение:</label>
+                            <input required name="message" style="padding: 8px; border-radius: 5px; height: 100px; "
+                                placeholder="Сообщение" type="messages">
+                            <button
+                                style="margin: 0 auto; margin-top: 15px; width: 130px; height: 40px; border: 0px solid; border-radius: 5px; background-color: blue; color: white;"
+                                type="submit">Отправить</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6" style="width: 100%;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.4776691059164!2d72.8925833!3d40.707499999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x71f962dfdd5ffb1d!2zNDDCsDQyJzI3LjAiTiA3MsKwNTMnMzMuMyJF!5e0!3m2!1sru!2skg!4v1669287922030!5m2!1sru!2skg"
+                            style="margin: 50px 0 0 0; border:0;" width="100%" height="400" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
