@@ -668,19 +668,6 @@ h5 {
   .foooter {
     height: auto;
   }
-  th {
-    font-size: 13px;
-  }
-  tr {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  td .btn {
-    width: 57px;
-    height: 27px;
-    font-size: 13px;
-    padding: 3px;
-  }
   .formGroup5 {
     width: 200px;
   }
@@ -759,24 +746,6 @@ h5 {
   .card-header,
   h3 {
     font-size: 13px;
-  }
-  th {
-    font-size: 13px;
-  }
-  tr {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  td .btn {
-    width: 57px;
-    height: 27px;
-    font-size: 13px;
-    padding: 3px;
-  }
-  .card-body2 {
-    margin: 20px 0;
-    padding: 0;
-    width: 100%;
   }
   .col-md-3 .input-group {
     margin: 10px 0;

@@ -12,14 +12,13 @@
 </div>
 <div class='container mt-3 mb-3'>
     <div class='row'>
-        <div class='col-md-12 '>
-            <div class='card shadow '>
-                <div class='card-header '>
+        <div class='col-md-12'>
+            <div class='card shadow'>
+                <div class='card-header'>
                     <h3 class="mb-0">Мои заказы</h3>
-                   </div>
-
-                <div class='card-body card-body2'>
-                    <table class="table table-bordered">
+                </div>
+                <div class='table-responsive'>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Дата заказа</th>
@@ -31,17 +30,17 @@
                         </thead>
                         <tbody>
                             {% for item in orders reversed %}
-                                <tr>
-                                    <td>{{ item.created_at }}</td>
-                                    <td>{{ item.tracking_no }}</td>
-                                    <td>{{ item.total_price | stringformat:'d' }} сом</td>
-                                    <td>{{ item.status }}</td>
-                                    <td>
-                                        <a href="{% url 'orderview' item.tracking_no %}" class="btn btn-primary">Подробнее
-                                        </a>
-                                    </td>
-                                    
-                                </tr>
+                            <tr>
+                                <td>{{ item.created_at }}</td>
+                                <td>{{ item.tracking_no }}</td>
+                                <td>{{ item.total_price | stringformat:'d' }} сом</td>
+                                <td>{{ item.status }}</td>
+                                <td>
+                                    <a href="{% url 'orderview' item.tracking_no %}" class="btn btn-primary">Подробнее
+                                    </a>
+                                </td>
+
+                            </tr>
                             {% endfor %}
                         </tbody>
                     </table>
