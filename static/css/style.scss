@@ -269,6 +269,10 @@ h5 {
         font-size: 13.9px !important;
     }
 
+    .product-viewtag-img {
+        height: 225px;
+    }
+
     .product_data2 .btn-primary {
         width: 155px;
         margin-left: -100px;
@@ -500,6 +504,10 @@ h5 {
     .butt .btn-primary {
         height: 30px !important;
 
+    }
+
+    .tagg {
+        margin: 0 0 0 140px !important;
     }
 }
 
@@ -765,7 +773,7 @@ h5 {
     }
 
     .col-md-4 label {
-        margin: 0 0 0 200px !important;
+        margin: 0 0 0 235px !important;
         font-size: 10px;
     }
 
@@ -776,7 +784,7 @@ h5 {
 
     .product-viewtag-img {
         margin: 0 0 15px 0;
-        height: 150px;
+        height: 220px;
     }
 
     .p-5 {
@@ -918,8 +926,14 @@ h5 {
     }
 
     .col-md-4 label {
-        margin: 0 0 0 70px !important;
-        font-size: 10px;
+        margin: 0 0 0 170px !important;
+        font-size: 10px !important;
+        padding: 5px 0 !important;
+    }
+
+    .product-viewtag-img {
+        margin: 0 0 5px 0;
+        height: 200px;
     }
 
     .col-md-8 h2 {
@@ -994,12 +1008,13 @@ h5 {
         font-size: 7px !important;
     }
 
-    .butt .btn-primary, .btn-danger {
+    .butt .btn-primary,
+    .btn-danger {
         height: 30px !important;
         width: 200px;
         font-size: 11px !important;
     }
-    
+
     .butt .btn-success {
         height: 30px !important;
         width: 200px;
