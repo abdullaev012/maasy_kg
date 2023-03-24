@@ -8,7 +8,7 @@ from .models import *
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'slug', 'description', 'created_at')
-
+    prepopulated_fields = {'slug': ('name',)}
 
 class CartAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'product', 'created_at')
@@ -69,7 +69,7 @@ class ProductAdmin(admin.ModelAdmin):
         'selling_price',
         'trending',
         'created_at')
-
+    prepopulated_fields = {'slug': ('name',)}
 
 class ProfitAdmin(admin.ModelAdmin):
     list_display = (

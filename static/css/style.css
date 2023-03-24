@@ -170,14 +170,8 @@ h5 {
     justify-content: space-around;
     gap: 5px;
   }
-  .rowwwwww {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-  }
   .cardd {
-    width: 310px;
+    width: 305px;
   }
   .asdfg {
     opacity: 0.7;

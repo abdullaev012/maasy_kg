@@ -1,9 +1,8 @@
 import datetime
 import os
-
+from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.db import models
-
 # Create your models here.
 
 from django.db.models import Avg
@@ -25,13 +24,11 @@ def get_file_path(request, filename):
 class Category(models.Model):
     name = models.CharField(
         max_length=150,
-        null=False,
-        blank=False,
-        verbose_name='Имя Категории')
+        db_index=True,
+    )
     slug = models.SlugField(
         max_length=150,
-        null=False,
-        blank=False,
+        unique=True,
         verbose_name='Слаг')
     image = models.ImageField(
         upload_to=get_file_path,
@@ -53,9 +50,17 @@ class Category(models.Model):
         verbose_name='В тренде')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 class Product(models.Model):
     category = models.ForeignKey(
@@ -65,12 +70,10 @@ class Product(models.Model):
     name = models.CharField(
         max_length=150,
         null=False,
-        blank=False,
-        verbose_name='Имя товара')
+        blank=False,)
     slug = models.SlugField(
         max_length=150,
-        null=False,
-        blank=False,
+        db_index=True,
         verbose_name='Слаг')
     sender_name = models.CharField(
         max_length=150,
@@ -110,7 +113,12 @@ class Product(models.Model):
         verbose_name='Тег')
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name='Дат добавление')
+        verbose_name='Дата добавление')
+
+    class Meta:
+        verbose_name = 'Продукты'
+        verbose_name_plural = 'Продукты'
+        index_together = (('id', 'slug'),)
 
     def __str__(self):
         return self.name
@@ -120,6 +128,10 @@ class Size(models.Model):
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
     size = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
+
+    class Meta:
+        verbose_name = 'Размер'
+        verbose_name_plural = 'Размеры'
 
 
 class Cart(models.Model):
@@ -202,6 +214,10 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Время')
 
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
+
     def __str__(self):
         return '{} - {}'.format(self.id, self.tracking_no)
 
@@ -260,6 +276,10 @@ class Profile(models.Model):
         verbose_name='Страна')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
 
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'
+
     def __str__(self):
         return self.user.username
 
@@ -282,6 +302,8 @@ class Сarousel(models.Model):
 
     class Meta:
         db_table = 'advertisement_product'
+        verbose_name = 'Карусель'
+        verbose_name_plural = 'Карусели'
 
 
 class Contacts(models.Model):
@@ -300,10 +322,18 @@ class Contacts(models.Model):
         auto_now=True,
         auto_now_add=False)
 
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
 
 class news_email(models.Model):
     email = models.CharField(max_length=150, verbose_name='Е-мейл', null=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
+
+    class Meta:
+        verbose_name = 'Новый емаил'
+        verbose_name_plural = 'Новые емаилы'
 
 
 class Profit(models.Model):
@@ -326,11 +356,22 @@ class Profit(models.Model):
         null=False,
         verbose_name='Все прибыли')
 
+    class Meta:
+        verbose_name = 'Прибыль'
+        verbose_name_plural = 'Прибыли'
+
+
 class GoodsSold(models.Model):
-    name_of_products = models.CharField(max_length=255, verbose_name='Имя товара')
-    how_many_times_sold = models.CharField(max_length=255, verbose_name='Сколько раз продано')
+    name_of_products = models.CharField(
+        max_length=255, verbose_name='Имя товара')
+    how_many_times_sold = models.CharField(
+        max_length=255, verbose_name='Сколько раз продано')
     item_size = models.CharField(max_length=255, verbose_name='Размер товара')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
+
+    class Meta:
+        verbose_name = 'Проданный товар'
+        verbose_name_plural = 'Проданные товары'
 
 
 class Rating(models.Model):
@@ -338,3 +379,7 @@ class Rating(models.Model):
         null=False, max_length=255, verbose_name='Имя клиента')
     total_price = models.PositiveIntegerField(
         null=False, verbose_name='Сумма покупки')
+
+    class Meta:
+        verbose_name = 'Рейтинг'
+        verbose_name_plural = 'Рейтинги'
