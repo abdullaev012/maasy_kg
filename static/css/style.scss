@@ -130,6 +130,10 @@ h5 {
     margin-left: -25px;
 }
 
+.butt .btn-danger {
+    margin-left: -40px;
+}
+
 .product_data2 .btn-primary {
     width: 200px;
     margin-left: -85px;
@@ -143,6 +147,15 @@ h5 {
     .container {
         width: 1025px;
         margin: 0 auto;
+    }
+
+    .butt .btn-success {
+        margin-left: -18px;
+    }
+
+    .butt .btn-danger {
+        width: 219px;
+        margin-left: -20px;
     }
 
     .margin_left_user {
@@ -260,6 +273,11 @@ h5 {
 @media screen and (max-width: 1000px) {
     * {
         font-size: 13.9px !important;
+    }
+
+    .butt .btn-danger {
+        width: 219px;
+        margin-left: 3px;
     }
 
     .product-viewtag-img {
@@ -1001,8 +1019,13 @@ h5 {
         font-size: 7px !important;
     }
 
-    .butt .btn-primary,
-    .btn-danger {
+    .butt .btn-primary {
+        height: 30px !important;
+        width: 200px;
+        font-size: 11px !important;
+    }
+
+    .butt .btn-danger {
         height: 30px !important;
         width: 200px;
         font-size: 11px !important;

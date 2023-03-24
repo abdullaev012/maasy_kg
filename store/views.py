@@ -38,11 +38,12 @@ def home(request):
     for y in sett:
         rating = Rating()
         user1 = User.objects.get(username=y)
-        user_orders_sum = Order.objects.filter(user=user1).aggregate(Sum('total_price'))
+        user_orders_sum = Order.objects.filter(
+            user=user1).aggregate(Sum('total_price'))
         rating.name_of_clients = user1.first_name
         rating.total_price = user_orders_sum['total_price__sum']
         rating.save()
-        
+
     dct = {}
     order_item = OrderItem.objects.all()
     for i in order_item:
@@ -50,7 +51,7 @@ def home(request):
             dct[f'{i.product.name}_{i.size}'] = dct[f'{i.product.name}_{i.size}'] = dct[f'{i.product.name}_{i.size}'] + i.quantity
         else:
             dct[f'{i.product.name}_{i.size}'] = i.quantity
-        
+
     gr = GoodsSold.objects.all()
     gr.delete()
     for f in reversed(dct):
@@ -117,7 +118,7 @@ def productview(request, cate_slug, prod_slug):
             products = Product.objects.get(slug=prod_slug, status=0)
             context = {'products': products, 'id': id, 'size': size, 'q': q}
         else:
-            messages.error(request, "Такой товар не найден")
+            messages.error(request, "Такой товар не найдено")
             return redirect('collections')
 
     else:
@@ -129,7 +130,6 @@ def productview(request, cate_slug, prod_slug):
 def productlistAjax(request):
     products = Product.objects.filter(status=0).values_list('name', flat=True)
     productslist = list(products)
-
     return JsonResponse(productslist, safe=False)
 
 

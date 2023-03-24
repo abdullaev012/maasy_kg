@@ -49,7 +49,7 @@
                                         список желаний <i class="fa-solid fa-heart"></i></a>
                                     {% for i in size %}
                                         {% if i.quantity == 0 %}
-                                            <button type="button" class="btn btn-danger">Размер: {{i.size}} Нет на складе &#128511;</button>
+                                            <a class="btn btn-danger">Размер: {{i.size}} Нет на складе &#128511;</a>
                                         {% else %}
                                             <a class="btn btn-primary mt-2" href="{% url 'addtocart' i.id %}">Размер: {{i.size}}, Добавить вкорзину <i class="fa-solid fa-basket-shopping"></i></a>
                                         {% endif %}
