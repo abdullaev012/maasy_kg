@@ -25,6 +25,7 @@ class Category(models.Model):
     name = models.CharField(
         max_length=150,
         db_index=True,
+        verbose_name='Имя категории'
     )
     slug = models.SlugField(
         max_length=150,
@@ -42,11 +43,9 @@ class Category(models.Model):
         verbose_name='Описание Категории ')
     status = models.BooleanField(
         default=False,
-        help_text="0=default, 1=Hidden",
         verbose_name='Статус Категории ')
     trending = models.BooleanField(
         default=False,
-        help_text="0=default, 1=trending",
         verbose_name='В тренде')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
 
@@ -70,7 +69,8 @@ class Product(models.Model):
     name = models.CharField(
         max_length=150,
         null=False,
-        blank=False,)
+        blank=False,
+        verbose_name='Имя товара')
     slug = models.SlugField(
         max_length=150,
         db_index=True,
@@ -94,17 +94,13 @@ class Product(models.Model):
         null=False,
         blank=False,
         verbose_name='За сколько вы купили?')
-    original_price = models.FloatField(
-        null=False, blank=False, verbose_name='Первоначальная цена')
     selling_price = models.FloatField(
         null=False, blank=False, verbose_name='Цена продажи')
     status = models.BooleanField(
         default=False,
-        help_text="0=default, 1=Hidden",
         verbose_name='Статус')
     trending = models.BooleanField(
         default=False,
-        help_text="0=default, 1=trending",
         verbose_name='В тренде')
     tag = models.CharField(
         max_length=150,
@@ -125,9 +121,9 @@ class Product(models.Model):
 
 
 class Size(models.Model):
-    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
-    size = models.PositiveIntegerField()
-    quantity = models.PositiveIntegerField()
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE, verbose_name='Имя товара')
+    size = models.PositiveIntegerField(verbose_name='Размер товара')
+    quantity = models.PositiveIntegerField(verbose_name='Штук товара')
 
     class Meta:
         verbose_name = 'Размер'
@@ -208,9 +204,6 @@ class Order(models.Model):
         null=True,
         max_length=150,
         verbose_name='Номер отслеживания')
-    # tracking_no = models.UUIDField(
-    #     unique=True,
-    #     default=uuid.uuid4())
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Время')
 
@@ -247,6 +240,10 @@ class OrderItem(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.order.id, self.order.tracking_no)
 
+
+    class Meta:
+        verbose_name = 'Заказанный товар'
+        verbose_name_plural = 'Заказанный товары'
 
 class Order_product(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
@@ -290,10 +287,10 @@ class Profile(models.Model):
 
 
 class Сarousel(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Name', blank=False)
+    name = models.CharField(max_length=150, verbose_name='Карусель', blank=False)
     image = models.ImageField(verbose_name='Image', upload_to='advertisement/')
     created_at = models.DateTimeField(
-        verbose_name='Date',
+        verbose_name='Дата',
         auto_now=True,
         auto_now_add=False)
 
@@ -318,7 +315,7 @@ class Contacts(models.Model):
         verbose_name='Сообщение',
         null=False)
     created_at = models.DateTimeField(
-        verbose_name='Date',
+        verbose_name='Дата',
         auto_now=True,
         auto_now_add=False)
 
@@ -332,8 +329,8 @@ class news_email(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
 
     class Meta:
-        verbose_name = 'Новый емаил'
-        verbose_name_plural = 'Новые емаилы'
+        verbose_name = 'Новый емайл'
+        verbose_name_plural = 'Новые емайлы'
 
 
 class Profit(models.Model):

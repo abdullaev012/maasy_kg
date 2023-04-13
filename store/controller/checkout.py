@@ -94,7 +94,7 @@ def placeorder(request):
             r = Cart.objects.filter(user=request.user)
             for b in r:
                 b.delete()
-            send_report()
+            # send_report()
         messages.success(request, "Ваш заказ успешно подвержден")
         return HttpResponseRedirect('/')
     except:

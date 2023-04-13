@@ -21,13 +21,13 @@
                         <h6>Основные детали</h6>
                         <hr>
                         <div class='row checkoutform'>
-                            <div class='col-md-6 '>
-                                <label>Имя </label>
+                            <div class='col-md-6'>
+                                <label>Имя</label>
                                 <input type="text" required value="{{ request.user.first_name }}" class="form-control"
                                     name="fname" placeholder="Введите свое имя">
                             </div>
-                            <div class='col-md-6 '>
-                                <label>Фамилия </label>
+                            <div class='col-md-6'>
+                                <label>Фамилия</label>
                                 <input type="text" required value="{{ request.user.last_name }}" class="form-control"
                                     name="lname" placeholder="Введите вашу фамилию">
                             </div>
@@ -37,12 +37,12 @@
                                     name="email" placeholder="Введите адрес электронной почты">
                             </div>
                             <div class='col-md-6 mt-2'>
-                                <label>Телефон </label>
+                                <label>Телефон</label>
                                 <input type="text" required value="{{ userprofile.user.phone }}" class="form-control"
                                     name="phone" placeholder="Введите свой телефон">
                             </div>
                             <div class='col-md-12 mt-2'>
-                                <label> Адрес </label>
+                                <label>Адрес</label>
                                 <textarea required value="{{ userprofile.user.address }}" class="form-control"
                                     name="address" placeholder="Введите свой адрес">{{ userprofile.address }}</textarea>
                             </div>
@@ -52,7 +52,7 @@
                                     name="city" placeholder="Введите свой город">
                             </div>
                             <div class='col-md-6 mt-2 '>
-                                <label>Область </label>
+                                <label>Область</label>
                                 <input type="text" required value="{{ userprofile.user.state }}" class="form-control"
                                     name="state" placeholder="Введите свой область">
                             </div>

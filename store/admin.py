@@ -7,15 +7,16 @@ from .models import *
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'slug', 'description', 'created_at')
+    search_fields = ('name',)
+    list_display = ('name', 'slug', 'description', 'created_at')
     prepopulated_fields = {'slug': ('name',)}
 
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'product', 'created_at')
+    list_display = ('user', 'product', 'created_at')
 
 
 class OrderProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'product_name', 'size')
+    list_display = ('user', 'product_name', 'size')
 
 
 class OrderItemAdmin(admin.TabularInline):
@@ -26,54 +27,54 @@ class OrderItemAdmin(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     search_fields = ('fname',)
     list_display = (
-        'id',
-        'status',
         'fname',
         'lname',
         'phone',
         'address',
         'city',
         'total_price',
+        'status',
         'payment_method',
         'created_at')
+    list_editable = ['status']
     list_filter = ['created_at']
     inlines = [OrderItemAdmin]
 
 
 class ContactsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'gmail', 'number', 'message', 'created_at')
+    search_fields = ('name',)
+    list_display = ('name', 'gmail', 'number', 'message', 'created_at')
 
 
 class emailAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'created_at')
+    search_fields = ('email',)
+    list_display = ('email', 'created_at')
 
 
 class profileAdmin(admin.ModelAdmin):
     list_display = (
-        'id',
         'user',
         'phone',
         'address',
         'city',
         'state',
         'created_at')
-
-
+    search_fields = ('user', 'phone', 'address')
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'id',
         'category',
         'name',
         'sender_name',
-        'original_price',
+        'first_price',
         'selling_price',
         'trending',
         'created_at')
+    search_fields = ('name',)
+    list_editable = ['first_price', 'selling_price', 'trending']
     prepopulated_fields = {'slug': ('name',)}
 
 class ProfitAdmin(admin.ModelAdmin):
     list_display = (
-        'id',
         'report_per_day',
         'report_per_week',
         'report_per_month',
@@ -85,26 +86,32 @@ class ProfitAdmin(admin.ModelAdmin):
 
 class GoodsSoldAdmin(admin.ModelAdmin):
     list_display = (
-        'id',
         'name_of_products',
         'how_many_times_sold',
         'item_size',
         'created_at',
         )
+    search_fields = ('name_of_products',)
     list_filter = ['created_at']
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name_of_clients', 'total_price')
+    search_fields = ('name_of_clients',)
+    list_display = ('name_of_clients', 'total_price')
 
 
 class SizeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'product', 'size', 'quantity')
+    search_fields = ('product',)
+    list_display = ('product', 'size', 'quantity')
+    list_editable = ['size', 'quantity']
 
+class СarouselAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+    list_display = ('name', 'created_at')
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Size, SizeAdmin)
-admin.site.register(Сarousel)
+admin.site.register(Сarousel, СarouselAdmin)
 admin.site.register(Rating, RatingAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Profile, profileAdmin)
