@@ -18,7 +18,7 @@ def home(request):
     usual_products = Product.objects.filter(trending=0)
     advertisement = Сarousel.objects.all()
     advertisement_last = Сarousel.objects.last()
-    send_report()
+    # send_report()
 
     size_pro = Size.objects.all()
     q = False

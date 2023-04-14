@@ -28,10 +28,10 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ('fname',)
     list_display = (
         'fname',
-        'lname',
+        # 'lname',
         'phone',
         'address',
-        'city',
+        # 'city',
         'total_price',
         'status',
         'payment_method',

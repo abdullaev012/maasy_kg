@@ -40,36 +40,36 @@ def send_report():
         created_at__gte=datetime.datetime.now() - timedelta(days=1))
     total1 = []
     for i1 in order_item1:
-        total1.append(i1.product.selling_price - i1.product.first_price)
+        total1.append((i1.product.selling_price - i1.product.first_price) * i1.quantity)
 
     order_item7 = OrderItem.objects.filter(
         created_at__gte=datetime.datetime.now() - timedelta(days=7))
     total7 = []
     for i7 in order_item7:
-        total7.append(i7.product.selling_price - i7.product.first_price)
+        total7.append((i7.product.selling_price - i7.product.first_price) * i7.quantity)
 
     order_item30 = OrderItem.objects.filter(
         created_at__gte=datetime.datetime.now() - timedelta(days=30))
     total30 = []
     for i30 in order_item30:
-        total30.append(i30.product.selling_price - i30.product.first_price)
+        total30.append((i30.product.selling_price - i30.product.first_price) * i30.quantity)
 
     order_item120 = OrderItem.objects.filter(
         created_at__gte=datetime.datetime.now() - timedelta(days=120))
     total120 = []
     for i120 in order_item120:
-        total120.append(i120.product.selling_price - i120.product.first_price)
+        total120.append((i120.product.selling_price - i120.product.first_price) * i120.quantity)
 
     order_item365 = OrderItem.objects.filter(
         created_at__gte=datetime.datetime.now() - timedelta(days=365))
     total365 = []
     for i365 in order_item365:
-        total365.append(i365.product.selling_price - i365.product.first_price)
+        total365.append((i365.product.selling_price - i365.product.first_price) * i365.quantity)
 
     order_item_all = OrderItem.objects.all()
     total_all = []
     for i in order_item_all:
-        total_all.append(i.product.selling_price - i.product.first_price)
+        total_all.append((i.product.selling_price - i.product.first_price) * i.quantity)
 
     profit = Profit.objects.all()
     profit.delete()

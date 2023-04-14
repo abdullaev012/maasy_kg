@@ -26,27 +26,27 @@
                                 <input type="text" required value="{{ request.user.first_name }}" class="form-control"
                                     name="fname" placeholder="Введите свое имя">
                             </div>
-                            <div class='col-md-6'>
+                            <!-- <div class='col-md-6'>
                                 <label>Фамилия</label>
                                 <input type="text" required value="{{ request.user.last_name }}" class="form-control"
                                     name="lname" placeholder="Введите вашу фамилию">
                             </div>
                             <div class='col-md-6 mt-2'>
-                                <label>Электронное письмо</label>
+                                <label>Электронное почта</label>
                                 <input type="email" required value="{{ request.user.email }}" class="form-control"
                                     name="email" placeholder="Введите адрес электронной почты">
-                            </div>
-                            <div class='col-md-6 mt-2'>
+                            </div> -->
+                            <div class='col-md-6'>
                                 <label>Телефон</label>
                                 <input type="text" required value="{{ userprofile.user.phone }}" class="form-control"
                                     name="phone" placeholder="Введите свой телефон">
                             </div>
-                            <div class='col-md-12 mt-2'>
+                            <div class='col-md-12'>
                                 <label>Адрес</label>
                                 <textarea required value="{{ userprofile.user.address }}" class="form-control"
                                     name="address" placeholder="Введите свой адрес">{{ userprofile.address }}</textarea>
                             </div>
-                            <div class='col-md-6 mt-2'>
+                            <!-- <div class='col-md-6 mt-2'>
                                 <label>Город</label>
                                 <input type="text" required value="{{ userprofile.user.city }}" class="form-control"
                                     name="city" placeholder="Введите свой город">
@@ -60,8 +60,8 @@
                                 <label>Страна</label>
                                 <input type="text" required value="{{ userprofile.user.country }}" class="form-control"
                                     name="country" placeholder="Введите свою страну">
-                            </div>
-                            <div class="col-md-6 mt-2">
+                            </div> -->
+                            <div class="col-md-12">
                                 <label for="recipient-name">Способы доставки</label>
                                 <select required class="form-select" id="inputGroupSelect04"
                                     aria-label="Example select with button addon" name="payment_method"

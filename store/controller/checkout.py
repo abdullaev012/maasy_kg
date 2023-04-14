@@ -64,13 +64,13 @@ def placeorder(request):
             neworder = Order()
             neworder.user = request.user
             neworder.fname = request.POST.get('fname')
-            neworder.lname = request.POST.get('lname')
-            neworder.email = request.POST.get('email')
+            # neworder.lname = request.POST.get('lname')
+            # neworder.email = request.POST.get('email')
             neworder.phone = request.POST.get('phone')
             neworder.address = request.POST.get('address')
-            neworder.city = request.POST.get('city')
-            neworder.state = request.POST.get('state')
-            neworder.country = request.POST.get('country')
+            # neworder.city = request.POST.get('city')
+            # neworder.state = request.POST.get('state')
+            # neworder.country = request.POST.get('country')
             neworder.payment_method = request.POST.get('payment_method')
             neworder.total_price = request.POST.get('total_price')
             trackno = str(random.randint(11111111, 99999999))
@@ -94,7 +94,7 @@ def placeorder(request):
             r = Cart.objects.filter(user=request.user)
             for b in r:
                 b.delete()
-            # send_report()
+        send_report()
         messages.success(request, "Ваш заказ успешно подвержден")
         return HttpResponseRedirect('/')
     except:

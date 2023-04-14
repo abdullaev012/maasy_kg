@@ -172,14 +172,14 @@ class Order(models.Model):
         choices=orderstatuses,
         verbose_name='Статус')
     fname = models.CharField(max_length=150, null=False, verbose_name='Имя')
-    lname = models.CharField(
-        max_length=150,
-        null=False,
-        verbose_name='Фамилия')
-    email = models.CharField(
-        max_length=150,
-        null=False,
-        verbose_name='Электронная почта')
+    # lname = models.CharField(
+    #     max_length=150,
+    #     null=False,
+    #     verbose_name='Фамилия')
+    # email = models.CharField(
+    #     max_length=150,
+    #     null=False,
+    #     verbose_name='Электронная почта')
     phone = models.CharField(
         max_length=150,
         null=False,
@@ -188,15 +188,15 @@ class Order(models.Model):
         max_length=150,
         null=False,
         verbose_name='Адрес')
-    city = models.CharField(max_length=150, null=False, verbose_name='Город')
-    state = models.CharField(
-        max_length=150,
-        null=False,
-        verbose_name='Область')
-    country = models.CharField(
-        max_length=150,
-        null=False,
-        verbose_name='Страна')
+    # city = models.CharField(max_length=150, null=False, verbose_name='Город')
+    # state = models.CharField(
+    #     max_length=150,
+    #     null=False,
+    #     verbose_name='Область')
+    # country = models.CharField(
+    #     max_length=150,
+    #     null=False,
+    #     verbose_name='Страна')
     total_price = models.FloatField(null=False, verbose_name='Итоговая цена')
     payment_method = models.CharField(
         max_length=200, verbose_name='Способ доставки')
