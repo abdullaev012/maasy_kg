@@ -56,8 +56,6 @@ class profileAdmin(admin.ModelAdmin):
         'user',
         'phone',
         'address',
-        'city',
-        'state',
         'created_at')
     search_fields = ('user', 'phone', 'address')
 class ProductAdmin(admin.ModelAdmin):

@@ -262,15 +262,6 @@ class Profile(models.Model):
         null=False,
         verbose_name='Телефон номер')
     address = models.TextField(null=False, verbose_name='Адрес')
-    city = models.CharField(max_length=150, null=False, verbose_name='Город')
-    state = models.CharField(
-        max_length=150,
-        null=False,
-        verbose_name='Область')
-    country = models.CharField(
-        max_length=150,
-        null=False,
-        verbose_name='Страна')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время')
 
     class Meta:
